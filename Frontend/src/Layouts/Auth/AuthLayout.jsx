@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Outlet,Navigate } from 'react-router-dom'
 
 const AuthLayout = () => {
-  return (
-    <div>AuthLayout</div>
-  )
+  const [user,setUser] = useState()
+  return user ? <Navigate to={'/'}/> : <Outlet/>;
 }
 
 export default AuthLayout

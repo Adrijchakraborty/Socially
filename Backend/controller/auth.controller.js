@@ -9,8 +9,12 @@ export const signup = async (req, res, next) => {
         const hashPassword = bcrypt.hashSync(password, 10);
         const user = new Auth({ password: hashPassword, ...rest });
         await user.save();
-        res.status(200).json(rest);
+        res.status(201).json(rest);
     } catch (error) {
+        if (error.code === 11000) { 
+            const fieldName = Object.keys(error.keyValue)[0];
+            return next(createError(400,`${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} already exists.`));
+        }
         next(error);
     }
 }

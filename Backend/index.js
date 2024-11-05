@@ -34,7 +34,7 @@ app.use((err,req,res,next) => {
     const message = err.message || "server error";
     const details = err.stack || "details unknown";
 
-    res.status(stat).json({status: stat, message: message, details: details});
+    res.status(stat).json({status: stat, message: message, details: details,success:false});
 
 })
 
