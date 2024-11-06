@@ -48,7 +48,7 @@ const Signup = () => {
           theme: "light",
           transition: Bounce,
         });
-        navigate('/login')
+        navigate('/select-topics')
       })
       .catch((err) => {
         //error handling to get a specified error message

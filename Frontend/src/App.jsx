@@ -3,6 +3,7 @@ import { Route,Routes } from 'react-router-dom'
 import MainLayout from './Layouts/Main/MainLayout'
 import { Home, Login, Signup } from './pages'
 import AuthLayout from './Layouts/Auth/AuthLayout'
+import SelectTopics from './pages/signup/SelectTopics'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Route element={<AuthLayout/>}>
         <Route path='/sign-up' element={<Signup/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/select-topics' element={<SelectTopics/>}/>
       </Route>
     </Routes>
   )

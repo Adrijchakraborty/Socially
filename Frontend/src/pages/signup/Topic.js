@@ -1,0 +1,35 @@
+export const topics = [
+    "Cooking",
+    "Vlogging",
+    "Traveling",
+    "Photography",
+    "Gardening",
+    "DIY Projects",
+    "Fitness & Exercise",
+    "Yoga & Meditation",
+    "Tech Gadgets",
+    "Gaming",
+    "Coding & Programming",
+    "Health & Wellness",
+    "Fashion & Styling",
+    "Beauty & Skincare",
+    "Interior Design",
+    "Automobiles",
+    "Pet Care",
+    "Finance & Investing",
+    "Productivity Hacks",
+    "Book Recommendations",
+    "Home Improvement",
+    "Digital Art",
+    "Self-Development",
+    "Podcasting",
+    "Music",
+    "Movie Reviews",
+    "Outdoor Adventures",
+    "Science Experiments",
+    "Language Learning",
+    "Writing & Blogging"
+  ];
+  
+
+  //https://api.unsplash.com/search/photos?query=cooking&client_id=ZNawRjyf1Z46hlRfa8RAJTTHqBT8EVfymxU1uPp1jpo

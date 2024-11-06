@@ -2,8 +2,9 @@
 import { initializeApp } from "firebase/app";
 import {FacebookAuthProvider, getAuth,GoogleAuthProvider} from "firebase/auth";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCPxy8-dh5bUDeMclvcS-Px1U3AByRUBiE",
+  apiKey: import.meta.env.VITE_API_FIREBASE_KEY,
   authDomain: "socially-fe3e9.firebaseapp.com",
   projectId: "socially-fe3e9",
   storageBucket: "socially-fe3e9.firebasestorage.app",
