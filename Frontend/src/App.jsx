@@ -3,7 +3,6 @@ import { Route,Routes } from 'react-router-dom'
 import MainLayout from './Layouts/Main/MainLayout'
 import { Home, Login, Signup } from './pages'
 import AuthLayout from './Layouts/Auth/AuthLayout'
-import { ToastContainer } from 'react-toastify'
 
 const App = () => {
   return (

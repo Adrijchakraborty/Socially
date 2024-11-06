@@ -2,9 +2,12 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { Bounce, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = () => {
     const [userData, setUserData] = useState()
+
+    const navigate = useNavigate()
 
     //creating user-informations using this function
     const handleChange = (e) => {
@@ -57,6 +60,7 @@ const SignupForm = () => {
                     theme: "light",
                     transition: Bounce,
                 });
+                navigate('/login');
             })
             .catch((err) => {
                 //error handling to get a specified error message
@@ -85,7 +89,7 @@ const SignupForm = () => {
                         <input onChange={handleChange} type="text" id="firstName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="John" required />
                     </div>
                     <div className="mb-5 flex-1">
-                        <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Second Name</label>
+                        <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
                         <input onChange={handleChange} type="text" id="lastName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Doe" required />
                     </div>
                 </div>
@@ -100,6 +104,8 @@ const SignupForm = () => {
                             onChange={handleChange}
                             type="date"
                             id="dob"
+                            min="1960-04-01"
+                            max="2017-04-30"
                             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                             required
                         />

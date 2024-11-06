@@ -35,8 +35,11 @@ input {
 }
 /*ends here*/
 /* sign up background */
-.bg-img {
+.bg-img1 {
   background: center / cover no-repeat url('https://images.pexels.com/photos/57690/pexels-photo-57690.jpeg');
+}
+.bg-img2 {
+  background: center / cover no-repeat url('https://images.pexels.com/photos/5081918/pexels-photo-5081918.jpeg');
 }
 /* ends here */
 

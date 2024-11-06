@@ -28,6 +28,10 @@ const authSchema = new Schema({
         type: String,
         required: true,
     },
+    profile : {
+        type: String,
+        default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb'
+    }
 });
 
 const Auth = mongoose.model('Auth', authSchema);
