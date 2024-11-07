@@ -60,3 +60,21 @@ input {
 }
 
 /* ends here */
+
+
+.masonry-item {
+  break-inside: avoid;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Dynamically calculate row span based on image height */
+.masonry-item {
+  grid-row-end: span 1;
+  /* Fallback calculation - JS may be needed if true dynamic sizing is essential */
+}

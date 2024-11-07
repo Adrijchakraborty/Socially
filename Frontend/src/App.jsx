@@ -16,8 +16,8 @@ const App = () => {
       {/* protected route */}
       <Route element={<AuthLayout/>}>
         <Route path='/sign-up' element={<Signup/>}/>
-        <Route path='/login' element={<Login/>}/>
         <Route path='/select-topics' element={<SelectTopics/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Route>
     </Routes>
   )

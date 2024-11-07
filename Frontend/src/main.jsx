@@ -6,10 +6,8 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 
 createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
         <BrowserRouter>
             <App />
             <ToastContainer/>
         </BrowserRouter>
-    </React.StrictMode>
 );
