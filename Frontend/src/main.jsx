@@ -6,11 +6,19 @@ import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import Context from './context/Context.jsx';
 
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './redux/store.js';
+
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-        <Context>
-            <App />
-            <ToastContainer />
-        </Context>
+        <Provider store={store}>
+            <PersistGate persistor={persistor}>
+                <Context>
+                    <App />
+                    <ToastContainer />
+                </Context>
+            </PersistGate>
+        </Provider>
     </BrowserRouter>
 );

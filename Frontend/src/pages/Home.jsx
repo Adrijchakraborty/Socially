@@ -1,12 +1,12 @@
 import React from 'react'
-import {Navbar} from '../components'
+import { useSelector } from 'react-redux'
+import PrivateHome from './home/PrivateHome';
+import PublicHome from './home/PublicHome';
 
 const Home = () => {
-  return (
-    <div>
-      <Navbar/>
-    </div>
-  )
+  const { userInformation } = useSelector((state) => state.user);
+  // console.log(userInformation)
+  return userInformation ? <PrivateHome/> : <PublicHome/>;
 }
 
 export default Home

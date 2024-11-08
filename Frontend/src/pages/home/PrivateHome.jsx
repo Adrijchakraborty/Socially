@@ -1,8 +1,12 @@
 import React from 'react'
+import { Navbar } from '../../components'
 
 const PrivateHome = () => {
   return (
-    <div>PrivateHome</div>
+    <div>
+      <Navbar/>
+      private
+    </div>
   )
 }
 

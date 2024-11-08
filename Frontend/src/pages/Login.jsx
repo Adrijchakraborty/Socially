@@ -7,11 +7,14 @@ import axios from 'axios'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { Bounce, toast } from 'react-toastify'
 import Loader from '../utils/Loader'
+import {useDispatch} from "react-redux"
+import {addUser} from "../redux/slice/userSlice"
 
 const Login = () => {
   const [data, setData] = useState()
 
   const navigate = useNavigate();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (data) {
@@ -46,6 +49,7 @@ const Login = () => {
           theme: "light",
           transition: Bounce,
         });
+        dispatch(addUser(response.data));
         navigate('/');
       })
       .catch((err) => {
