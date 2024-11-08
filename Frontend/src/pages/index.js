@@ -1,5 +1,6 @@
+import React from "react";
 import Home from "./Home";
-import Signup from "./Signup";
-import Login from "./Login";
+const LazySignup = React.lazy(() => import("./Signup"))
+const LazyLogIn = React.lazy(() => import("./Login"))
 
-export { Home, Signup, Login};
+export { Home, LazySignup, LazyLogIn};
