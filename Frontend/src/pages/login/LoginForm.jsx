@@ -3,10 +3,14 @@ import axios from 'axios'
 import { Bounce, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import {useDispatch} from "react-redux"
+import {addUser} from "../../redux/slice/userSlice"
 
 
 const LoginForm = () => {
     const [userData, setUserData] = useState()
+
+    const dispatch = useDispatch()
 
     const navigate = useNavigate();
     //creating user-informations using this function
@@ -45,6 +49,7 @@ const LoginForm = () => {
                     theme: "light",
                     transition: Bounce,
                 });
+                dispatch(addUser(response.data));
                 navigate('/');
             })
             .catch((err) => {
