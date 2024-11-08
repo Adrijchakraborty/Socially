@@ -9,7 +9,8 @@ export const signup = async (req, res, next) => {
         const hashPassword = bcrypt.hashSync(password, 10);
         const user = new Auth({ password: hashPassword, ...rest });
         await user.save();
-        res.status(201).json(rest);
+        const { password: pass, ...others } = user._doc;
+        res.status(201).json(others);
     } catch (error) {
         if (error.code === 11000) {
             const fieldName = Object.keys(error.keyValue)[0];
@@ -48,3 +49,25 @@ export const login = async (req, res, next) => {
     }
 }
 
+export const updateUser = async(req, res,next) => {
+    try {
+        const {topics,id} = req.body;
+        
+        const user = await Auth.findById(id);
+
+        if(!user) {
+            return next(createError(404,"User not found"));
+        }
+
+        topics.forEach((topic) => {
+            if(!user.topics.includes(topic)) {
+                user.topics.push(topic);
+            }
+        })
+
+        await user.save();
+        res.status(200).json(user);
+    } catch (error) {
+        next(error);
+    }
+}

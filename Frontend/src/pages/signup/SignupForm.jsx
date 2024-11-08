@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { Bounce, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { GlobalContext } from '../../context/Context';
 
 const SignupForm = () => {
     const [userData, setUserData] = useState()
+
+    const {setUserInfo} = useContext(GlobalContext);
+
 
     const navigate = useNavigate()
 
@@ -60,6 +64,7 @@ const SignupForm = () => {
                     theme: "light",
                     transition: Bounce,
                 });
+                setUserInfo(response.data);
                 navigate('/select-topics');
             })
             .catch((err) => {

@@ -4,10 +4,13 @@ import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
+import Context from './context/Context.jsx';
 
 createRoot(document.getElementById('root')).render(
-        <BrowserRouter>
+    <BrowserRouter>
+        <Context>
             <App />
-            <ToastContainer/>
-        </BrowserRouter>
+            <ToastContainer />
+        </Context>
+    </BrowserRouter>
 );
