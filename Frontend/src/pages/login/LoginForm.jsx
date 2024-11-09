@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch} from "react-redux"
 import {addUser} from "../../redux/slice/userSlice"
+import { LoginApi } from './loginApi';
 
 
 const LoginForm = () => {
@@ -23,50 +24,7 @@ const LoginForm = () => {
     //submitting data in this function with the help of axios package
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('/api/auth/login', userData)
-            .then((response) => {
-                if (response.data.success === false) {
-                    return toast.error(response.data.message, {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        transition: Bounce,
-                    });
-                }
-                toast.success('Login successful!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
-                dispatch(addUser(response.data));
-                navigate('/');
-            })
-            .catch((err) => {
-                //error handling to get a specified error message
-                const errorMessage = err.response?.data?.message || err.message || 'An error occurred';
-                toast.error(errorMessage, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
-            });
+        LoginApi(userData,dispatch,navigate)
     };
 
 

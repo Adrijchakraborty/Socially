@@ -10,6 +10,7 @@ import axios from 'axios'
 import { GlobalContext } from '../context/Context'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import Loader from '../utils/Loader'
+import { signUpApi } from './signup/signUpApi'
 
 
 const Signup = () => {
@@ -27,50 +28,7 @@ const Signup = () => {
   //this will be called if someone log in with google
   const submitGoogleAuthData = (e) => {
     e.preventDefault();
-    axios.post('/api/auth/sign-up', data)
-      .then((response) => {
-        if (response.data.success === false) {
-          return toast.error(response.data.message, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          });
-        }
-        toast.success('Registration successful!', {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-        setUserInfo(response.data)
-        navigate('/select-topics')
-      })
-      .catch((err) => {
-        //error handling to get a specified error message
-        const errorMessage = err.response?.data?.message || err.message || 'An error occurred';
-        toast.error(errorMessage, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
-      });
+    signUpApi(data, navigate, setUserInfo);
     dialogRef.current.close();
   }
 

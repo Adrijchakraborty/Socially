@@ -4,9 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+/* *{
   outline: 2px solid black;
-}
+} */
 
 /* variable color to adjust theme */
 :root {

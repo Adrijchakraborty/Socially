@@ -4,11 +4,12 @@ import { Bounce, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { GlobalContext } from '../../context/Context';
+import { signUpApi } from './signUpApi';
 
 const SignupForm = () => {
     const [userData, setUserData] = useState()
 
-    const {setUserInfo} = useContext(GlobalContext);
+    const { setUserInfo } = useContext(GlobalContext);
 
 
     const navigate = useNavigate()
@@ -24,7 +25,7 @@ const SignupForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         //here react toastify is used to display success or error
-        if(userData.confirmPassword !== userData.password) {
+        if (userData.confirmPassword !== userData.password) {
             return toast.error("Passwords doesn't match !", {
                 position: "top-right",
                 autoClose: 5000,
@@ -35,55 +36,12 @@ const SignupForm = () => {
                 progress: undefined,
                 theme: "light",
                 transition: Bounce,
-            }); 
-        }
-        const {confirmPassword,...data} = userData
-        axios.post('/api/auth/sign-up', data)
-            .then((response) => {
-                if (response.data.success === false) {
-                    return toast.error(response.data.message, {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "light",
-                        transition: Bounce,
-                    });
-                }
-                toast.success('Registration successful!', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
-                setUserInfo(response.data);
-                navigate('/select-topics');
-            })
-            .catch((err) => {
-                //error handling to get a specified error message
-                const errorMessage = err.response?.data?.message || err.message || 'An error occurred';
-                toast.error(errorMessage, {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
             });
+        }
+        const { confirmPassword, ...data } = userData
+        signUpApi(data, navigate, setUserInfo);
     };
-    
+
     return (
         <div>
             {/* input form making here*/}
