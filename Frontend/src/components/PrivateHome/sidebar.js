@@ -1,23 +1,27 @@
-import { CiHome } from "react-icons/ci";
-import { CiSquarePlus } from "react-icons/ci";
-import { FiMessageCircle } from "react-icons/fi";
-import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoHomeOutline } from "react-icons/io5";
+import { IoHomeSharp } from "react-icons/io5";
+import { IoMdAddCircleOutline } from "react-icons/io";
+import { IoMdAddCircle } from "react-icons/io";
+import { AiOutlineMessage } from "react-icons/ai";
+import { AiFillMessage } from "react-icons/ai";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { IoMdNotifications } from "react-icons/io";
 
 export const sidebarList = [
     {
-        "icon" : CiHome,
+        "icon" : IoHomeOutline,
         "title" : "Home"
     },
     {
-        "icon" : CiSquarePlus,
-        "title" : "Add"
+        "icon" : IoMdAddCircleOutline,
+        "title" : "Create"
     },
     {
-        "icon" : FiMessageCircle,
+        "icon" : AiOutlineMessage,
         "title" : "Message"
     },
     {
-        "icon" : IoIosNotificationsOutline,
+        "icon" : IoMdNotificationsOutline,
         "title" : "Notifications"
     },
     
