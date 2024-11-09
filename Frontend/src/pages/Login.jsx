@@ -54,7 +54,7 @@ const Login = () => {
   }
   return (
     <LazyLoadComponent placeholder={<Loader/>} threshold={100}>
-      <div className='flex flex-col-reverse md:flex-row h-screen'>
+      <div className='flex flex-col-reverse md:flex-row h-screen max-w-[1440px] mx-auto'>
         {/* section-1 */}
         <div className='flex-1'>
           <div className='px-[5vw] h-full flex flex-col justify-center'>

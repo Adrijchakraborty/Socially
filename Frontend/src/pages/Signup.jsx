@@ -71,7 +71,7 @@ const Signup = () => {
   }
   return (
     <LazyLoadComponent placeholder={<Loader />} threshold={100}>
-      <div className='flex flex-col md:flex-row h-screen'>
+      <div className='flex flex-col md:flex-row h-screen max-w-[1440px] mx-auto'>
         {/* section-1 */}
         <div className='rounded-xl h-[300px] md:h-auto m-3 flex-1 bg-img1 text-white flex flex-col justify-between items-center py-5'>
           <div className='font-itim-regular text-3xl md:text-7xl'>Socially</div>
