@@ -10,19 +10,27 @@ import { IoMdNotifications } from "react-icons/io";
 export const sidebarList = [
     {
         "icon" : IoHomeOutline,
-        "title" : "Home"
+        "altIcon" : IoHomeSharp,
+        "title" : "Home",
+        "path" : '/'
     },
     {
         "icon" : IoMdAddCircleOutline,
-        "title" : "Create"
+        "altIcon" : IoMdAddCircle,
+        "title" : "Create",
+        "path" : null
     },
     {
         "icon" : AiOutlineMessage,
-        "title" : "Message"
+        "altIcon" : AiFillMessage,
+        "title" : "Message",
+        "path" : '/messages'
     },
     {
         "icon" : IoMdNotificationsOutline,
-        "title" : "Notifications"
+        "altIcon" : IoMdNotifications,
+        "title" : "Notifications",
+        "path" : null
     },
     
 ]

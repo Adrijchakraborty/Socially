@@ -1,6 +1,8 @@
 import React from "react";
-import Home from "./Home";
+const LazyHome = React.lazy(() => import("./Home"))
 const LazySignup = React.lazy(() => import("./Signup"))
 const LazyLogIn = React.lazy(() => import("./Login"))
+const LazyProfile = React.lazy(() => import("./Profile"))
+const LazyMessages = React.lazy(() => import("./Messages"))
 
-export { Home, LazySignup, LazyLogIn};
+export { LazyHome, LazySignup, LazyLogIn, LazyProfile , LazyMessages};
