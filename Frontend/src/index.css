@@ -67,4 +67,17 @@ input {
   transform: scale(1.1);
 }
 
+.sidebar {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 /* ends here */
+
+/* Create post */
+
+.create-header {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/*ends here*/

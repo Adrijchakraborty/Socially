@@ -13,7 +13,7 @@ const Header = () => {
   const [selected,setSelected] = useState(0)
 
   return (
-    <div className=' flex justify-center my-10'>
+    <div className=' flex justify-center my-5 md:my-10'>
       <div className='flex border border-gray-400 gap-3 rounded-full p-2'>
         {options.map((option,index)=>{
           return (
