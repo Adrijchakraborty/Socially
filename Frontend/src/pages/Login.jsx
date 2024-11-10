@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import LoginForm from './login/LoginForm'
 import { auth, provider1 } from '../services/GoogleAuth/config'
-import { signInWithPopup } from 'firebase/auth'
+import { signInWithPopup,signInWithRedirect } from 'firebase/auth'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';

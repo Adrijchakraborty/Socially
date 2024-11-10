@@ -8,10 +8,12 @@ const PrivateHome = () => {
         <Sidebar />
       </div>
       <div className="border-l border-gray-400"></div>
-      
+
       <div className='flex-1'>
-        <Header />
-        <MainContent />
+        <div className='w-[90%] md:w-[60%] mx-auto'>
+          <Header />
+          <MainContent />
+        </div>
       </div>
       <div className="border-l border-gray-400"></div>
       <div className='sticky top-0 h-screen hidden lg:block md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
