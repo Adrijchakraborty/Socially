@@ -2,8 +2,12 @@ import express from 'express';
 import dotenv from "dotenv"
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
+import cors from 'cors'
+
+
 
 import authRouter from "./router/auth.router.js"
+import uploadRouter from "./router/upload.router.js"
 
 const app = express();
 dotenv.config();
@@ -26,8 +30,10 @@ app.get('/', (req, res) =>{
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 
 app.use("/api/auth",authRouter);
+app.use("/api/upload", uploadRouter)
 
 app.use((err,req,res,next) => {
     const stat = err.status || 500;
