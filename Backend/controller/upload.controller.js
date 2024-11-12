@@ -1,6 +1,4 @@
-import supabase from "../config/supabase/Supabase.js";
-
-
+import supabase from "../config/supabase.js";
 
 export const imageUpload = async (req, res, next) => {
     const file = req.file;
@@ -22,15 +20,15 @@ export const imageUpload = async (req, res, next) => {
                 upsert: false,
             });
 
-            if (error) {
-                throw error;
-            }
+        if (error) {
+            throw error;
+        }
 
         res.status(200).json({
             message: "File uploaded successfully",
-            filePath: data.path,
+            filePath: data,
         });
     } catch (error) {
-        next(error)
+        next(error);
     }
 };
