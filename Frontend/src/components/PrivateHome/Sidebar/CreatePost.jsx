@@ -92,7 +92,7 @@ const CreatePost = ({ isOpen, onClose }) => {
   return (
     <dialog ref={dialogRef} className="create-header h-[50vh] w-[400px] rounded-lg cursor-default relative">
       {nextPage ? 
-      <React.Suspense fallback={<Loader />}> <LazyCreateNext urlItem={{url,filePath}}/></React.Suspense>
+      <React.Suspense fallback={<Loader />}> <LazyCreateNext urlItem={{url}}/></React.Suspense>
        :
 
         <div>

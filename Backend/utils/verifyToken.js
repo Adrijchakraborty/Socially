@@ -4,7 +4,6 @@ import { createError } from "./createError.js";
 export const verifyToken = (req, res, next) => {
   
   const token = req.cookies.token;
-
   if (!token) {
     return next(createError(401,'Access Denied: No Token Provided!'));
   }
