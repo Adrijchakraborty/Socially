@@ -8,6 +8,7 @@ import cors from 'cors'
 
 import authRouter from "./router/auth.router.js"
 import uploadRouter from "./router/upload.router.js"
+import postRouter from "./router/post.router.js"
 
 const app = express();
 dotenv.config();
@@ -33,7 +34,8 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use("/api/auth",authRouter);
-app.use("/api/upload", uploadRouter)
+app.use("/api/upload", uploadRouter);
+app.use("/api/post", postRouter);
 
 app.use((err,req,res,next) => {
     const stat = err.status || 500;

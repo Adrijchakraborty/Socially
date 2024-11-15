@@ -6,8 +6,7 @@ const authSchema = new Schema({
         required: true,
     },
     lastName: {
-        type: String,
-        required: true,
+        type: String
     },
     email: {
         type: String,
@@ -32,7 +31,7 @@ const authSchema = new Schema({
         type: String,
         default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb'
     }
-});
+},{ timestamps: true });
 
 const Auth = mongoose.model('Auth', authSchema);
 

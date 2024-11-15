@@ -29,7 +29,11 @@ const CardItems = () => {
                     <p>{userInformation.username}</p>
                 </div>
                 <div id='content' className='py-2'>
-                    <img src="https://images.pexels.com/photos/26953529/pexels-photo-26953529/free-photo-of-woman-holding-vinyl-disk.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" className='border' />
+                    <LazyLoadImage
+                        alt={'content'}
+                        effect="opacity"
+                        src={'https://images.pexels.com/photos/26953529/pexels-photo-26953529/free-photo-of-woman-holding-vinyl-disk.jpeg?auto=compress&cs=tinysrgb&w=600'}
+                    />
                 </div>
                 <div id='like-comment' className='flex gap-4 py-2 text-xl'>
                     {likeComment.map((icon, index) => {
@@ -55,6 +59,11 @@ const CardItems = () => {
                 <div id='content' className='py-2'>
                     <LazyLoadImage
                         alt={'content'}
+                        effect="opacity"
+                        wrapperProps={{
+                            // If you need to, you can tweak the effect transition using the wrapper style.
+                            style: {transitionDelay: "1s"},
+                        }}
                         src={'https://images.pexels.com/photos/26953529/pexels-photo-26953529/free-photo-of-woman-holding-vinyl-disk.jpeg?auto=compress&cs=tinysrgb&w=600'}
                     />
 
