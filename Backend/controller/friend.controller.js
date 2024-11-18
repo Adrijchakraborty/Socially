@@ -5,37 +5,53 @@ import { createError } from "../utils/createError.js";
 export const friendList = async (req, res, next) => {
     try {
         const user = req.user;
-        const list = await Friend.findOne({ Ref: user.id });
-        if (!list) return next(createError(404, "FriendList does not exist !!"));
+
+        // Find the user's friend list
+        const userFriendList = await Friend.findOne({ Ref: user.id });
+        if (!userFriendList) {
+            return next(createError(404, "FriendList does not exist!"));
+        }
 
         const { follower, following } = req.body;
 
-        if (follower) {
-            if (list.followers.includes(follower)) {
-                return next(createError(404, "Already follower"));
-            }
-            list.followers.push(follower);
-        } else {
-            if (list.following.includes(following)) {
-                return next(createError(404, "Already following"));
-            }
-            list.following.push(following);
+        // Find the friend list of the "following" user
+        const followingFriendList = await Friend.findOne({ Ref: following });
+        if (!followingFriendList) {
+            return next(createError(404, "Following user does not exist!"));
         }
 
-        await list.save();
+        // Check if already a follower
+        if (followingFriendList.followers.includes(follower)) {
+            return next(createError(400, "Already a follower!"));
+        }
 
-        res.status(200).json(list);
+        // Add follower to the following user's followers list
+        followingFriendList.followers.push(follower);
+
+        // Check if already following
+        if (userFriendList.following.includes(following)) {
+            return next(createError(400, "Already following!"));
+        }
+
+        // Add following to the user's following list
+        userFriendList.following.push(following);
+
+        // Save updates to both documents
+        await Promise.all([userFriendList.save(), followingFriendList.save()]);
+
+        res.status(200).json({ message: "Friend list updated successfully!" });
     } catch (error) {
         next(error);
     }
 };
+
 
 export const findUsersWithCommonTopics = async (req, res, next) => {
     try {
         const user = await Auth.findById(req.user.id);
         if (!user) return next(createError(404, "User not found"));
 
-        const user_friendlist = await Friend.findOne({Ref : user._id});
+        const user_friendlist = await Friend.findOne({ Ref: user._id });
 
 
         const limit = parseInt(req.query.limit) || 5;
@@ -44,9 +60,9 @@ export const findUsersWithCommonTopics = async (req, res, next) => {
         const similarUsers = await Auth.find(
             {
                 topics: { $in: user.topics },
-                _id : { 
-                    $ne : user._id,
-                    $nin : user_friendlist.following
+                _id: {
+                    $ne: user._id,
+                    $nin: user_friendlist.following
                 }
             }).limit(limit).skip(skip);
 
@@ -56,9 +72,9 @@ export const findUsersWithCommonTopics = async (req, res, next) => {
     }
 };
 
-export const getFriendList = async(req, res,next) => {
+export const getFriendList = async (req, res, next) => {
     try {
-        const friendList = await Friend.findOne({Ref : req.user.id})
+        const friendList = await Friend.findOne({ Ref: req.user.id })
         res.status(200).json(friendList);
     } catch (error) {
         next(error);

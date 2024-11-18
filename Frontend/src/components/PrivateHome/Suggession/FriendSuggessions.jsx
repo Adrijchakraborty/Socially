@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import {useSelector} from "react-redux"
 import axios from 'axios'
 
 const limit = 2;
@@ -6,6 +7,8 @@ const FriendSuggessions = () => {
   const [suggession, setSuggession] = useState([])
   const [friendList, setFriendList] = useState([])
   const [skip,setSkip] = useState(0)
+
+  const {userInformation} = useSelector(state=>state.user)
 
   const fetchSuggessions = () => {
 
@@ -41,10 +44,11 @@ const FriendSuggessions = () => {
 
   const handleClick = (id) => {
     axios.post('/api/friendlist/add-friends', {
-      following : id
+      following : id,
+      follower : userInformation._id
     })
     .then((response) => {
-      console.log(response.data);
+      console.log(response.data)
     })
     .catch((err) => {
       console.log(err);
