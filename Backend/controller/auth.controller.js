@@ -2,6 +2,7 @@ import Auth from "../models/auth.model.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 import { createError } from "../utils/createError.js";
+import Friend from "../models/friend.model.js";
 
 export const signup = async (req, res, next) => {
     try {
@@ -9,6 +10,8 @@ export const signup = async (req, res, next) => {
         const hashPassword = bcrypt.hashSync(password, 10);
         const user = new Auth({ password: hashPassword, ...rest });
         await user.save();
+        const friendList = await Friend.create({Ref : user._id})
+        await friendList.save();
         const { password: pass, ...others } = user._doc;
         res.status(201).json(others);
     } catch (error) {

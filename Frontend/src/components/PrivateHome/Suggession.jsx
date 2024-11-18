@@ -1,6 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import FriendSuggessions from './Suggession/FriendSuggessions'
 
 const Suggession = () => {
   const { userInformation } = useSelector(state => state.user)
@@ -18,6 +19,7 @@ const Suggession = () => {
       </Link>
       <div>
         <h1 className='text-sm'>Suggessions :</h1>
+        <FriendSuggessions/>
       </div>
     </div>
   )
