@@ -8,9 +8,9 @@ const Messages = () => {
         <Sidebar />
       </div>
       <div className='flex justify-center items-center h-screen'>
-      coming soon...
+        coming soon...
       </div>
-     
+
     </div>
   )
 }

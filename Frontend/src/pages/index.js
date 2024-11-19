@@ -4,5 +4,6 @@ const LazySignup = React.lazy(() => import("./Signup"))
 const LazyLogIn = React.lazy(() => import("./Login"))
 const LazyProfile = React.lazy(() => import("./Profile"))
 const LazyMessages = React.lazy(() => import("./Messages"))
+const LazySearch = React.lazy(() => import("./Search"))
 
-export { LazyHome, LazySignup, LazyLogIn, LazyProfile , LazyMessages};
+export { LazyHome, LazySignup, LazyLogIn, LazyProfile , LazyMessages, LazySearch};

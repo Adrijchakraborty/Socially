@@ -10,6 +10,7 @@ import authRouter from "./router/auth.router.js"
 import uploadRouter from "./router/upload.router.js"
 import postRouter from "./router/post.router.js"
 import friendRouter from "./router/friend.router.js"
+import searchRouter from "./router/search.router.js"
 
 const app = express();
 dotenv.config();
@@ -38,6 +39,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/upload", uploadRouter);
 app.use("/api/post", postRouter);
 app.use("/api/friendlist", friendRouter);
+app.use("/api/search", searchRouter);
 
 app.use((err, req, res, next) => {
     const stat = err.status || 500;

@@ -54,7 +54,7 @@ export const findUsersWithCommonTopics = async (req, res, next) => {
         const user_friendlist = await Friend.findOne({ Ref: user._id });
 
 
-        const limit = parseInt(req.query.limit) || 5;
+        const limit = parseInt(req.query.limit) || 2;
         const skip = parseInt(req.query.skip) || 0;
 
         const similarUsers = await Auth.find(

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import MainLayout from './Layouts/Main/MainLayout'
-import { LazyHome, LazyLogIn, LazyMessages, LazyProfile, LazySignup } from './pages'
+import { LazyHome, LazyLogIn, LazyMessages, LazyProfile, LazySearch, LazySignup } from './pages'
 import AuthLayout from './Layouts/Auth/AuthLayout'
 import SelectTopics from './pages/signup/SelectTopics'
 import PrivateTopics from './Layouts/Private/PrivateTopics'
@@ -17,6 +17,7 @@ const App = () => {
         <Route element={<Private />}>
           <Route path='/profile/:name' element={<React.Suspense fallback={<Loader />}> <LazyProfile /></React.Suspense>} />
           <Route path='/messages' element={<React.Suspense fallback={<Loader />}> <LazyMessages /></React.Suspense>} />
+          <Route path='/search' element={<React.Suspense fallback={<Loader />}> <LazySearch /></React.Suspense>} />
         </Route>
       </Route>
 

@@ -44,12 +44,10 @@ const Sidebar = () => {
           <li
             key={index}
             onClick={() => handleClick(index, item.path)}
-            className={`icon-parent transition text-2xl py-3 md:hover:bg-gray-200 cursor-pointer md:mx-3 md:px-2 flex items-center gap-2 rounded-md ${
-              selected != 1 && selected === index ? 'font-bold' : ''
-            }`}
+            className={`icon-parent transition text-2xl py-3 md:hover:bg-gray-200 cursor-pointer md:mx-3 md:px-2 flex items-center gap-2 rounded-md ${selected === index ? 'font-bold' : ''} ${index === 2 && 'hidden md:flex'}`}
           >
             <span className="icons">
-              {selected !== 1  && selected === index ? <item.altIcon /> : <item.icon />}
+              { selected === index ? <item.altIcon /> : <item.icon />}
             </span>
             <p className="text-base hidden lg:block">{item.title}</p>
           </li>
