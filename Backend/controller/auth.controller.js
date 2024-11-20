@@ -10,7 +10,7 @@ export const signup = async (req, res, next) => {
         const hashPassword = bcrypt.hashSync(password, 10);
         const user = new Auth({ password: hashPassword, ...rest });
         await user.save();
-        const friendList = await Friend.create({Ref : user._id})
+        const friendList = await Friend.create({ Ref: user._id })
         await friendList.save();
         const { password: pass, ...others } = user._doc;
         res.status(201).json(others);
@@ -33,7 +33,7 @@ export const login = async (req, res, next) => {
             const hashPassword = bcrypt.compareSync(password, user.password);
             if (!hashPassword) return next(createError(404, "Invalid Credentials"));
         }
-        else if((!username && password) || (username && !password)) {
+        else if ((!username && password) || (username && !password)) {
             return next(createError(404, "Invalid Credentials"));
         }
 
@@ -52,24 +52,40 @@ export const login = async (req, res, next) => {
     }
 }
 
-export const updateUser = async(req, res,next) => {
+export const updateUser = async (req, res, next) => {
     try {
-        const {topics,id} = req.body;
-        
+        const { topics, id } = req.body;
+
         const user = await Auth.findById(id);
 
-        if(!user) {
-            return next(createError(404,"User not found"));
+        if (!user) {
+            return next(createError(404, "User not found"));
         }
 
         topics.forEach((topic) => {
-            if(!user.topics.includes(topic)) {
+            if (!user.topics.includes(topic)) {
                 user.topics.push(topic);
             }
         })
 
         await user.save();
         res.status(200).json(user);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const getUser = async (req, res, next) => {
+    try {
+        const username = req.query.username;
+
+        const user = await Auth.findOne({username: username});
+
+        if(!user) return next(createError(404,"User not found"));
+
+        const {password,...rest} = user._doc;
+
+        res.status(200).json(rest);
     } catch (error) {
         next(error);
     }

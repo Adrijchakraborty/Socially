@@ -29,7 +29,7 @@ const authSchema = new Schema({
     },
     profile : {
         type: String,
-        default: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb'
+        default: 'https://imgs.search.brave.com/9OiswaaeRgvyBUOQde0fj79HhEwbfIxkiqLqEIop4cU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzgzL2Jj/LzhiLzgzYmM4Yjg4/Y2Y2YmM0YjRlMDRk/MTUzYTQxOGNkZTYy/LmpwZw'
     }
 },{ timestamps: true });
 

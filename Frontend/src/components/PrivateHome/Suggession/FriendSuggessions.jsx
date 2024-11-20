@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from "react-redux"
 import axios from 'axios'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const limit = 2;
 const FriendSuggessions = () => {
@@ -9,6 +10,7 @@ const FriendSuggessions = () => {
   const [skip, setSkip] = useState(0)
 
   const { userInformation } = useSelector(state => state.user)
+  const navigate = useNavigate()
 
   const fetchSuggessions = () => {
 
@@ -66,15 +68,16 @@ const FriendSuggessions = () => {
         return (
           <div key={index} className='flex items-center my-3 gap-2'>
             <div
+             onClick={()=>navigate(`/profile/${item.username}`)}
               style={{
                 backgroundImage: `url(${item.profile})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
-              className='w-8 h-8 rounded-full'
+              className='w-8 h-8 rounded-full cursor-pointer'
             ></div>
-            <p>{item.username}</p>
+            <p onClick={()=>navigate(`/profile/${item.username}`)} className='cursor-pointer'>{item.username}</p>
             <button onClick={() => handleClick(item._id)} type="button" className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList.following?.includes(item._id) ? "following" : "follow"}</button>
           </div>
         )
