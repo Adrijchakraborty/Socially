@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-const FollowerComponent = () => {
+const FollowerComponent = ({id}) => {
   const [follower,setFollower] = useState()
 
   useEffect(() => {
-    axios.get('/api/friendlist/get-friendlist')
+    axios.get(`/api/friendlist/get-friendlist?id=${id}`)
     .then((response)=>{
       setFollower(response.data.followers);
     })
@@ -16,7 +16,7 @@ const FollowerComponent = () => {
 
   return (
     <div>
-      {follower && <p>Follower list is empty</p>}
+      {follower == 0 && <p>No Follower</p>}
       {follower?.map((item,index)=>{
         return (
           <div className='flex items-center my-3 gap-2' key={index}>

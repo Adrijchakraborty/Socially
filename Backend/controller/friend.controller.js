@@ -74,7 +74,9 @@ export const findUsersWithCommonTopics = async (req, res, next) => {
 
 export const getFriendList = async (req, res, next) => {
     try {
-        const friendList = await Friend.findOne({ Ref: req.user.id }).populate([
+        const id = req.query.id;
+
+        const friendList = await Friend.findOne({ Ref : id }).populate([
             {
                 path : "followers",
                 select : "username profile"

@@ -78,7 +78,7 @@ const FriendSuggessions = () => {
               className='w-8 h-8 rounded-full cursor-pointer'
             ></div>
             <p onClick={()=>navigate(`/profile/${item.username}`)} className='cursor-pointer'>{item.username}</p>
-            <button onClick={() => handleClick(item._id)} type="button" className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList.following?.includes(item._id) ? "following" : "follow"}</button>
+            <button onClick={() => handleClick(item._id)} type="button" className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList?.following?.includes(item._id) ? "following" : "follow"}</button>
           </div>
         )
       })}

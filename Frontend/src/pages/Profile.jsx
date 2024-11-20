@@ -44,7 +44,7 @@ const Profile = () => {
           {user?._id === userInformation?._id && <button className='bg-red-400 w-8 z-10'>edit</button>}
         </div>
         <div>
-          <ProfileContent />
+          <ProfileContent value={{userInformation,user}}/>
 
         </div>
       </div>

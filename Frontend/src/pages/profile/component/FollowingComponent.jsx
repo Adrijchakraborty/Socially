@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
-const FollowingComponent = () => {
+const FollowingComponent = ({id}) => {
   const [following,setFollowing] = useState([])
 
   useEffect(() => {
-    axios.get('/api/friendlist/get-friendlist')
+    axios.get(`/api/friendlist/get-friendlist?id=${id}`)
     .then((response)=>{
       setFollowing(response.data.following);
     })
@@ -16,6 +16,7 @@ const FollowingComponent = () => {
 
   return (
     <div>
+      {following.length == 0 && <p>No following</p>}
       {following?.map((item,index)=>{
         return (
           <div className='flex items-center my-3 gap-2' key={index}>
