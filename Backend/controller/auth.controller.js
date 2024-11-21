@@ -79,13 +79,22 @@ export const getUser = async (req, res, next) => {
     try {
         const username = req.query.username;
 
-        const user = await Auth.findOne({username: username});
+        const user = await Auth.findOne({ username: username });
 
-        if(!user) return next(createError(404,"User not found"));
+        if (!user) return next(createError(404, "User not found"));
 
-        const {password,...rest} = user._doc;
+        const { password, ...rest } = user._doc;
 
         res.status(200).json(rest);
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const logout = (req, res, next) => {
+    try {
+        res.clearCookie('token');
+        res.status(200).json("logged out");
     } catch (error) {
         next(error);
     }

@@ -27,7 +27,7 @@ const CreatePostNext = ({ urlItem }) => {
         return toast.error(response.data.message);
       }
       toast.success("post successfully created");
-      console.log(response.data)
+      // console.log(response.data)
     })
     .catch((error)=>{
       toast.error(error.message)

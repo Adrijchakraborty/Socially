@@ -7,12 +7,14 @@ import ProfileContent from './profile/ProfileContent';
 
 const Profile = () => {
   const [user, setUser] = useState();
+  const [index,setIndex] = useState(0)
 
   const { userInformation } = useSelector(state => state.user);
 
   const params = useParams()
 
   useEffect(() => {
+    setIndex(0);
     axios.get(`/api/auth/get-user?username=${params.name}`)
       .then((response) => {
         setUser(response.data);
@@ -44,7 +46,7 @@ const Profile = () => {
           {user?._id === userInformation?._id && <button className='bg-red-400 w-8 z-10'>edit</button>}
         </div>
         <div>
-          <ProfileContent value={{userInformation,user}}/>
+          <ProfileContent value={{userInformation,user,index,setIndex}}/>
 
         </div>
       </div>

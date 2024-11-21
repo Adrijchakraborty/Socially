@@ -13,7 +13,7 @@ import { persistor, store } from './redux/store.js';
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
         <Provider store={store}>
-            <PersistGate persistor={persistor}>
+            <PersistGate loading={null} persistor={persistor}>
                 <Context>
                     <App />
                     <ToastContainer />
