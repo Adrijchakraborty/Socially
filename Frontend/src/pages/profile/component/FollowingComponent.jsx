@@ -1,8 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const FollowingComponent = ({id}) => {
   const [following,setFollowing] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get(`/api/friendlist/get-friendlist?id=${id}`)
