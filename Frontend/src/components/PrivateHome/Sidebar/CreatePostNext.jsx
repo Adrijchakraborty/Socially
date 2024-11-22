@@ -5,7 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { toast } from 'react-toastify';
 
 const CreatePostNext = ({ urlItem }) => {
-  const { url } = urlItem;
+  const { url,setNextPage } = urlItem;
   const [post, setPost] = useState({
     "postImage" : url
   });
@@ -27,7 +27,7 @@ const CreatePostNext = ({ urlItem }) => {
         return toast.error(response.data.message);
       }
       toast.success("post successfully created");
-      // console.log(response.data)
+      setNextPage(false);
     })
     .catch((error)=>{
       toast.error(error.message)

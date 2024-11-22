@@ -45,7 +45,7 @@ const ViewPost = () => {
         if (ind == 0) {
             axios.post(`/api/post/edit-likes/${post._id}`)
                 .then((res) => {
-                    // console.log(res.data);
+                    setPost(res.data)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -53,18 +53,19 @@ const ViewPost = () => {
         }
     }
 
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post(`/api/post/edit-comments/${post._id}`,{
-            comment : comment
+        axios.post(`/api/post/edit-comments/${post._id}`, {
+            comment: comment
         })
-        .then((res)=>{
-            
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((res) => {
+                setPost(res.data);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        setComment('')
     }
 
     return (
@@ -83,28 +84,34 @@ const ViewPost = () => {
                 </div>
 
                 <div className='min-w-[35%] '>
+                    <div>{post?.postDetails} </div>
                     <div id='like-comment' className='flex gap-4 py-2 text-xl'>
                         {likeComment.map((icon, index) => {
                             return (
-                                <span key={index} onClick={() => handleClick(index)} className='cursor-pointer hover:opacity-40 transition'>{index == 0 && post?.likes?.includes(userInformation._id) ?
+                                <span key={index} onClick={() => handleClick(index)} className='cursor-pointer hover:opacity-40 transition flex gap-1'>{index == 0 && post?.likes?.includes(userInformation._id) ?
                                     <icon.selected /> : <icon.icon />
-                                }</span>
+                                }
+                                    {index == 0 && post?.likes?.length > 0 && <p className='text-sm'>{post?.likes?.length}</p>}
+                                </span>
                             )
                         })}
                     </div>
-                    <div>Likes {post?.likes?.length > 0 && post?.likes?.length}</div>
+
                     <div>
                         <form onSubmit={handleSubmit} className='flex gap-2 items-center'>
-                            <input onChange={(e) => setComment(e.target.value)} type="text" placeholder='write your comment...' className='outline-none bg-transparent py-3' />
+                            <input onChange={(e) => setComment(e.target.value)} value={comment} type="text" placeholder='write your comment...' className='outline-none bg-transparent py-3' />
                             <button type='submit' className={`${comment.length == 0 && 'hidden'} cursor-pointer`}>
                                 <IoSend />
                             </button>
                         </form>
-                        <h1>Recent Comments</h1>
+                        <h1>Recent Comments :</h1>
                         {post?.comments?.length == 0 && <p>No comments yet...</p>}
                         {post?.comments?.map((comment, index) => {
                             return (
-                                <p key={index}>{comment.commentText}</p>
+                                <div key={index} className='flex flex-wrap gap-2 pl-2'>
+                                    <h1 className='font-semibold'>{comment.userId.username}</h1>
+                                    <p>{comment.commentText}</p>
+                                </div>
                             )
                         })}
                     </div>

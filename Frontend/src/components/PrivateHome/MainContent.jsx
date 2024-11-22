@@ -3,7 +3,7 @@ import CardItems from './MainContent/CardItems'
 
 const MainContent = () => {
   return (
-    <div className='h-[500vh]'>
+    <div className='min-h-screen'>
       <CardItems/>
     </div>
   )

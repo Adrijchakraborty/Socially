@@ -39,7 +39,7 @@ export const friendList = async (req, res, next) => {
         // Save updates to both documents
         await Promise.all([userFriendList.save(), followingFriendList.save()]);
 
-        res.status(200).json({ message: "Friend list updated successfully!" });
+        res.status(200).json(userFriendList);
     } catch (error) {
         next(error);
     }
@@ -75,7 +75,6 @@ export const findUsersWithCommonTopics = async (req, res, next) => {
 export const getFriendList = async (req, res, next) => {
     try {
         const id = req.query.id;
-
         const friendList = await Friend.findOne({ Ref : id }).populate([
             {
                 path : "followers",
