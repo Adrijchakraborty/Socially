@@ -1,10 +1,15 @@
 import React from 'react'
-import CardItems from './MainContent/CardItems'
+import Loader from '../../utils/Loader';
+const LazyCardItems = React.lazy(()=> import("./MainContent/CardItems"))
+const LazyForYouCards = React.lazy(()=> import("./MainContent/ForYouCards"))
 
-const MainContent = () => {
+const MainContent = ({value}) => {
+  const {selected} = value;
   return (
     <div className='min-h-screen'>
-      <CardItems/>
+      {selected == 0 && <React.Suspense fallback={<Loader/>}> <LazyCardItems/> </React.Suspense>}
+      {selected == 1 && <React.Suspense fallback={<Loader/>}> <LazyForYouCards/> </React.Suspense>}
+      
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -22,10 +22,41 @@ const likeComment = [
 
 const CardItem = ({ value }) => {
     const [comment, setComment] = useState('')
+    const [friendList, setFriendList] = useState([])
     const { post, userInformation } = value;
     const [currentPost, setCurrentPost] = useState(post)
 
     const navigate = useNavigate()
+
+    const handleAddFriend = (id) => {
+        axios.post('/api/friendlist/add-friends', {
+          following: id,
+          follower: userInformation._id
+        })
+          .then((response) => {
+            setFriendList(response.data)
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+    
+      }
+
+      const fetchFriendList = () => {
+        axios.get('/api/friendlist/get-friendlist')
+          .then((response) => {
+            // console.log(response.data);
+            setFriendList(response.data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+
+
+      useEffect(() => {
+        fetchFriendList();
+      }, []);
 
     const handleClick = (ind) => {
 
@@ -38,7 +69,7 @@ const CardItem = ({ value }) => {
                     console.log(err)
                 })
         }
-        else if(ind == 1) {
+        else if (ind == 1) {
             navigate(`/view-post/${currentPost?._id}`)
         }
     }
@@ -59,15 +90,20 @@ const CardItem = ({ value }) => {
     }
     return (
         <div id='card-item' className='py-2'>
-            <div id='header' className='flex items-center gap-2 py-2'>
-                <div
-                    style={{ backgroundImage: `url(${currentPost?.Ref?.profile})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}
-                    className={`w-8 h-8 rounded-full`}>
+            <div id='header' className='flex items-center justify-between'>
+                <div className='flex items-center gap-2 py-2'>
+                    <div
+                        style={{ backgroundImage: `url(${currentPost?.Ref?.profile})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundPosition: 'center' }}
+                        className={`w-8 h-8 rounded-full`}>
 
+                    </div>
+                    <p onClick={() => navigate(`/profile/${currentPost?.Ref?.username}`)} className='cursor-pointer'>{currentPost?.Ref?.username}</p>
                 </div>
-                <p onClick={() => navigate(`/profile/${currentPost?.Ref?.username}`)} className='cursor-pointer'>{currentPost?.Ref?.username}</p>
+                <div>
+                    <button onClick={() => handleAddFriend(currentPost?.Ref?._id)} type="button" className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList?.following?.some((item) => item._id === currentPost?.Ref?._id) ? "following" : "follow"}</button>
+                </div>
             </div>
-            <div id='content' onClick={()=>navigate(`/view-post/${currentPost?._id}`)} className='py-2 cursor-pointer'>
+            <div id='content' onClick={() => navigate(`/view-post/${currentPost?._id}`)} className='py-2 cursor-pointer'>
                 <LazyLoadImage
                     alt={'content'}
                     effect="blur"

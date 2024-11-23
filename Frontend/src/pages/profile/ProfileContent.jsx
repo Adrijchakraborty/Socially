@@ -62,7 +62,7 @@ const ProfileContent = ({value}) => {
       }
 
       const fetchFriendList = () => {
-        axios.get(`/api/friendlist/get-friendlist?id=${userInformation?._id}`)
+        axios.get(`/api/friendlist/get-friendlist`)
           .then((response) => {
             // console.log(response.data);
             setFriendList(response.data);

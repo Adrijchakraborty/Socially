@@ -128,3 +128,23 @@ export const getFollowingFeedPosts = async (req, res, next) => {
         next(error);
     }
 };
+
+export const getAllPosts = async (req, res, next) => {
+    try {
+        const posts = await Post.find({}).sort({createdAt: -1}).populate([
+            {
+                path : "Ref",
+                select : "username email profile"
+            },
+            {
+                path : "comments.userId",
+                select : "username email"
+            },
+            
+        ]).skip(0).limit(10);
+
+        res.status(200).json(posts);
+    } catch (error) {
+        next(error);
+    }
+}

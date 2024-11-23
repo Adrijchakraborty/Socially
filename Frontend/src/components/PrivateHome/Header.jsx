@@ -10,9 +10,9 @@ const options = [
     "title": "For You"
   },
 ]
-const Header = () => {
-  const [selected, setSelected] = useState(0)
+const Header = ({value}) => {
 
+  const {selected,setSelected} = value;
   return (
     <div className=' flex flex-col items-center justify-center my-5 md:my-10'>
       <div className='flex items-center py-2 md:hidden justify-between w-full'>
