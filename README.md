@@ -1,6 +1,5 @@
 
 ![desktop](https://github.com/user-attachments/assets/908a7bdc-1215-4686-8688-1fb2b61c1ec3)
-![WhatsApp Image 2024-11-24 at 6 02 24 PM](https://github.com/user-attachments/assets/3bdeb00a-d192-4059-a28a-7155c6b332e7)
 
 
 # 🌐 Socially  
