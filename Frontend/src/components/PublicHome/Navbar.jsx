@@ -3,14 +3,17 @@ import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Navbar = () => {
-  const {userInformation} = useSelector(state=>state.user)
   return (
-    <div className='flex justify-around bg-stone-700 text-white '>
-        <div>Socially</div>
-        <div className={`${userInformation ? 'hidden' : 'flex gap-4'}`}>
-            <Link to={'/sign-up'}>Sign-up</Link>
-            <Link to={'/login'}>Login</Link>
-        </div>
+    <div className="navbar bg-base-100">
+      <div className="flex-1">
+        <h1 className="text-2xl">Socially</h1>
+      </div>
+      <div className="flex-none">
+        <ul className="menu menu-horizontal px-1 text-lg">
+          <li><Link to={'/sign-up'}>Sign-up</Link></li>
+          <li><Link to={'/login'}>Login</Link></li>
+        </ul>
+      </div>
     </div>
   )
 }

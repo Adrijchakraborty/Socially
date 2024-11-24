@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Itim&family=Oswald:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Oswald:wght@200..700&family=Parkinsans:wght@300..800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -59,6 +59,13 @@ input {
   text-shadow: 2px 2px #101010;
 }
 
+.font-parkinsans {
+  font-family: "Parkinsans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* ends here */
 
 /* Sidebar icon style */
@@ -81,3 +88,5 @@ input {
 }
 
 /*ends here*/
+
+

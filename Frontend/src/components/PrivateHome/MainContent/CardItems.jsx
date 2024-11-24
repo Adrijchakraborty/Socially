@@ -21,6 +21,7 @@ const CardItems = () => {
     },[])
     return (
         <div>
+            {posts.length == 0 && <p className='min-h-screen flex justify-center items-center'>Follow people to see this page</p>}
             {posts?.map((post,index) =>{
                 return (
                     <div key={index}>
