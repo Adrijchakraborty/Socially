@@ -42,27 +42,32 @@ Follow these steps to set up **Socially** locally:
 1. Clone the repository:  
    ```bash
    git clone https://github.com/Adrijchakraborty/Socially.git
+   ```
 
 2. Navigate to the project directory and install dependencies:
    a) Frontend :
       ```bash
       cd Frontend
       npm install
+      ```
    b) Backend :
       ```bash
       cd Backend
       npm install
+      ```
 3. Set up environment variables:
-   Create a .env file in the backend directory. Use the .env.example file for guidance.
+   Create a ```.env``` file in the backend directory. Use the ```.env.example``` file for guidance.
 4. Start the development servers:
    a) Frontend :
       ```bash
       npm run dev
+      ```
    b) Backend :
       ```bash
       npm run dev
+      ```
 
 ## 🎯 Future Enhancements
-📨 Messaging feature for real-time communication.
-🛡️ Advanced security measures.
-📈 Analytics dashboard for user activity.
+- 📨 Messaging feature for real-time communication.
+- 🛡️ Advanced security measures.
+- 📈 Analytics dashboard for user activity.
