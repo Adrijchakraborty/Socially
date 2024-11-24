@@ -7,7 +7,7 @@ const PublicHome = () => {
   const navigate = useNavigate();
   return (
     <div
-    className='h-screen'
+    className='h-screen max-w-[1440px] mx-auto'
     style={{
       backgroundImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(https://images.pexels.com/photos/920382/pexels-photo-920382.jpeg)',
       backgroundPosition: 'center', // Center the image
@@ -17,8 +17,8 @@ const PublicHome = () => {
     >
       <Navbar/>
       <div
-      className='flex gap-3 flex-col justify-center items-center text-white mt-[15%]'>
-        <h1 className='font-parkinsans text-3xl'>Start a new way to connect</h1>
+      className='flex gap-3 flex-col justify-center items-center text-white mt-[35%] sm:mt-[20%] md:mt-[15%]'>
+        <h1 className='font-parkinsans text-3xl text-center'>Start a new way to connect</h1>
         <button onClick={()=> navigate('/sign-up')} className="btn btn-primary">Get Started</button>
       </div>
     </div>
