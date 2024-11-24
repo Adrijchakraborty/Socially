@@ -86,7 +86,7 @@ const ProfileContent = ({value}) => {
                 )
             })}
             <button onClick={handleClick} className={`${user?._id === userInformation?._id ? 'block' : 'hidden'} bg-red-400 px-2 py-1 rounded-full absolute right-0 top-0`}>Logout</button>
-            <button onClick={() => handleClickFollow(user?._id)} type="button" hidden={user?._id === userInformation?._id} className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList?.following?.some((item) => item._id === user._id) ? "following" : "follow"}</button>
+            <button onClick={() => handleClickFollow(user?._id)} type="button" hidden={user?._id === userInformation?._id} className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-3 py-1.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">{friendList?.following?.some((item) => item?._id === user?._id) ? "following" : "follow"}</button>
         </div>
         <div className='mx-2 md:mx-0'>
             {
