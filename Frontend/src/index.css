@@ -89,4 +89,16 @@ input {
 
 /*ends here*/
 
+/* Masionary Layout */
+
+.parent {
+  column-width: 350px;
+}
+
+.child {
+  width: 100%;
+}
+
+/* Masionary Layout end */
+
 

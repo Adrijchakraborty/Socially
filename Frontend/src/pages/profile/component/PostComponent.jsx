@@ -21,11 +21,11 @@ const PostComponent = ({ id }) => {
     }
   }, [id])
   return (
-    <div className='my-4 flex flex-wrap'>
+    <div className=' parent my-5'>
       {posts.length == 0 && <p>No posts</p>}
       {posts.map((post, index) => {
         return (
-          <div key={index} onClick={()=>navigate(`/view-post/${post._id}`)} className='cursor-pointer w-1/3 h-[24vw] overflow-hidden p-2'>
+          <div key={index} onClick={()=>navigate(`/view-post/${post._id}`)} className='child cursor-pointer'>
             <LazyLoadImage
               alt="Posts"
               effect="blur"
