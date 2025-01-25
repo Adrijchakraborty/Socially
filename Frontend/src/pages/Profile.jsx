@@ -29,7 +29,7 @@ const Profile = () => {
       <div className='sticky z-10 top-0 md:h-screen md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
         <Sidebar />
       </div>
-      <div className="hidden md:block border-l h-screen border-gray-400"></div>
+      <div className="hidden md:block border-l h-auto border-gray-400"></div>
       <div className='w-full'>
         <div className='flex flex-col gap-2 items-center py-3 px-3 justify-center'>
           <div id='profile-image'

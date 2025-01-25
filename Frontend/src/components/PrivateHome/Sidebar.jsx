@@ -33,7 +33,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="fixed side sidebar w-full md:h-screen bottom-0 md:relative md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]">
+    <div className="fixed sidebar w-full md:h-screen bottom-0 md:relative md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]">
       {width > 768 && (
         <div className="font-itim-regular sm:text-base md:text-4xl py-3 md:mx-3 md:px-2 cursor-pointer">
           Socially

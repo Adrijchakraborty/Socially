@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import {useNavigate} from "react-router-dom"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import EndPage from '../../../components/EndPage';
 
 const PostComponent = ({ id }) => {
   const [posts, setPosts] = useState([]);
@@ -36,6 +37,7 @@ const PostComponent = ({ id }) => {
           </div>
         )
       })}
+      <EndPage/>
     </div>
   )
 }

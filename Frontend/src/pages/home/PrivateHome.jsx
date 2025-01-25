@@ -6,7 +6,7 @@ const PrivateHome = () => {
   return (
     <div className='flex flex-col-reverse md:flex-row min-h-screen max-w-[1440px] mx-auto'>
 
-      <div className='sticky top-0 md:h-screen md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
+      <div className='sticky z-10 top-0 md:h-screen md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
         <Sidebar />
       </div>
 
