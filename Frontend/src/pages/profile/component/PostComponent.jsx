@@ -21,8 +21,8 @@ const PostComponent = ({ id }) => {
     }
   }, [id])
   return (
-    <div className=' parent my-5 -z-50'>
-      {posts.length == 0 && <p>No posts</p>}
+    <div className=' parent my-5'>
+      {posts.length == 0 && <p className='h-screen flex justify-center items-center text-center'>No posts</p>}
       {posts.map((post, index) => {
         return (
           <div key={index} onClick={()=>navigate(`/view-post/${post._id}`)} className='child mb-2 cursor-pointer'>

@@ -19,7 +19,7 @@ const FollowerComponent = ({id}) => {
 
   return (
     <div>
-      {follower == 0 && <p>No Follower</p>}
+      {follower == 0 && <p className='h-screen flex justify-center items-center text-center'>No Follower</p>}
       {follower?.map((item,index)=>{
         return (
           <div className='flex items-center my-3 gap-2' key={index}>

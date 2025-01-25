@@ -19,7 +19,7 @@ const FollowingComponent = ({id}) => {
 
   return (
     <div>
-      {following.length == 0 && <p>No following</p>}
+      {following.length == 0 && <p className='h-screen flex justify-center items-center text-center'>No following</p>}
       {following?.map((item,index)=>{
         return (
           <div className='flex items-center my-3 gap-2' key={index}>
