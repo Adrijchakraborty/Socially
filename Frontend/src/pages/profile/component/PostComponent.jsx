@@ -21,11 +21,11 @@ const PostComponent = ({ id }) => {
     }
   }, [id])
   return (
-    <div className=' parent my-5'>
+    <div className=' parent my-5 -z-50'>
       {posts.length == 0 && <p>No posts</p>}
       {posts.map((post, index) => {
         return (
-          <div key={index} onClick={()=>navigate(`/view-post/${post._id}`)} className='child cursor-pointer'>
+          <div key={index} onClick={()=>navigate(`/view-post/${post._id}`)} className='child mb-2 cursor-pointer'>
             <LazyLoadImage
               alt="Posts"
               effect="blur"
