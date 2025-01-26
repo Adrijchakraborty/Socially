@@ -70,11 +70,11 @@ const ViewPost = () => {
 
     return (
         <div className='flex flex-col-reverse md:flex-row min-h-screen max-w-[1440px] mx-auto'>
-            <div className='sticky top-0 h-screen md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
+            <div className='sticky top-0 md:h-screen md:min-w-[15vw] lg:min-w-[20vw] xl:min-w-[290px]'>
                 <Sidebar />
             </div>
-            <div className="hidden md:block border-l h-screen border-gray-400"></div>
-            <div className='md:max-w-[60%] mx-auto flex flex-col sm:flex-row my-5 px-3 md:px-0 border border-gray-200'>
+            <div className="hidden md:block border-l h-auto border-gray-400"></div>
+            <div className='min-h-screen md:max-w-[60%] mx-auto flex flex-col sm:flex-row sm:gap-3 my-5 px-3 md:px-0 border border-gray-200'>
                 <div>
                     <LazyLoadImage
                         alt={'PostImage'}
@@ -84,7 +84,7 @@ const ViewPost = () => {
                 </div>
 
                 <div className='min-w-[35%] '>
-                    <div>{post?.postDetails} </div>
+                    <div className='text-lg font-semibold'>{post?.postDetails} </div>
                     <div id='like-comment' className='flex gap-4 py-2 text-xl'>
                         {likeComment.map((icon, index) => {
                             return (
