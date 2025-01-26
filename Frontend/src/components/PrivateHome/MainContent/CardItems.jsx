@@ -10,21 +10,40 @@ const CardItems = () => {
     const [posts,setPosts] = useState([])
     const { userInformation } = useSelector(state => state.user);
 
-    useEffect(() =>{
-        axios.get('/api/post/get-following-feed')
-        .then((res)=>{
-            setPosts(res.data);
+    const [skip,setSkip] = useState(0);
+    const [limit,setLimit] = useState(10);
+
+    useEffect(() => {
+        axios
+            .get(`/api/post/get-all?limit=${limit}&skip=${skip}`)
+            .then((res) => {
+                setPosts([...posts,...res.data]);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [skip]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((param)=>{
+            if(param[0].isIntersecting){
+                observer.unobserve(lastImage)
+                setSkip(prev=>prev + 10);
+            }
         })
-        .catch((err) => {
-            console.log(err);
-        })
-    },[])
+
+        const lastImage = document.querySelector('.card-itmes:last-child');
+        if(!lastImage) {
+            return;
+        }
+        observer.observe(lastImage);
+    },[posts])
     return (
         <div>
             {posts.length == 0 && <p className='min-h-screen flex justify-center items-center'>Follow people to see this page</p>}
             {posts?.map((post,index) =>{
                 return (
-                    <div key={index}>
+                    <div className='card-items' key={index}>
                         <CardItem  value={{post,userInformation}}/>
                     </div>                   
                 )
