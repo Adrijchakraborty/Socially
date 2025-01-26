@@ -78,6 +78,7 @@ input {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+
 /* ends here */
 
 /* Create post */
@@ -97,6 +98,7 @@ input {
 
 .child {
   width: 100%;
+  z-index: -100000;
 }
 
 /* Masionary Layout end */
