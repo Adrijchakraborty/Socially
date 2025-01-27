@@ -8,6 +8,7 @@ import CardItem from './CardItem';
 
 const ForYouCards = () => {
     const [posts,setPosts] = useState([])
+    const [prevImg,setPrevImg] = useState()
     const { userInformation } = useSelector(state => state.user);
 
     const [skip,setSkip] = useState(0);
@@ -22,18 +23,20 @@ const ForYouCards = () => {
             .catch((err) => {
                 console.log(err);
             });
-    }, [skip]);
+    }, [limit,skip]);
 
     useEffect(() => {
         const observer = new IntersectionObserver((param)=>{
             if(param[0].isIntersecting){
                 observer.unobserve(lastImage)
+                setPrevImg(lastImage);
                 setSkip(prev=>prev + 10);
             }
         })
 
         const lastImage = document.querySelector('.card-itmes:last-child');
-        if(!lastImage) {
+
+        if(!lastImage || lastImage === prevImg) {
             return;
         }
         observer.observe(lastImage);

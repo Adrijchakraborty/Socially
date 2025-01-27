@@ -102,6 +102,9 @@ export const editComments = async (req, res, next) => {
 
 export const getFollowingFeedPosts = async (req, res, next) => {
     try {
+        const Limit = parseInt(req.query.limit, 10) || 10; 
+        const Skip = parseInt(req.query.skip, 10) || 0;
+
         // Find the following list of the current user
         const followingFeed = await Friend.findOne({ Ref: req.user.id }).select("following");
         if (!followingFeed) return res.status(404).json({ message: "No following data found." });
@@ -121,7 +124,7 @@ export const getFollowingFeedPosts = async (req, res, next) => {
                     select : "username email"
                 },
                 
-            ]).skip(0).limit(10);
+            ]).skip(Skip).limit(Limit);
 
         res.status(200).json(posts);
     } catch (error) {
