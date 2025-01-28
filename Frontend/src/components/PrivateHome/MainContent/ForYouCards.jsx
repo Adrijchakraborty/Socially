@@ -6,9 +6,10 @@ import CardItem from './CardItem';
 
 
 
-const ForYouCards = () => {
+const ForYouCards = ({value}) => {
     const [posts,setPosts] = useState([])
     const [prevImg,setPrevImg] = useState()
+    const {friendList,setFriendList} = value;
     const { userInformation } = useSelector(state => state.user);
 
     const [skip,setSkip] = useState(0);
@@ -46,7 +47,7 @@ const ForYouCards = () => {
             {posts?.map((post,index) =>{
                 return (
                     <div className='card-itmes' key={index}>
-                        <CardItem  value={{post,userInformation}}/>
+                        <CardItem  value={{post,userInformation,friendList,setFriendList}}/>
                     </div>                   
                 )
             })}

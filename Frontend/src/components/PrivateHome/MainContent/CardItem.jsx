@@ -22,8 +22,8 @@ const likeComment = [
 
 const CardItem = ({ value }) => {
     const [comment, setComment] = useState('')
-    const [friendList, setFriendList] = useState([])
-    const { post, userInformation } = value;
+    
+    const { post, userInformation,friendList,setFriendList } = value;
     const [currentPost, setCurrentPost] = useState(post)
 
     const navigate = useNavigate()
@@ -42,21 +42,7 @@ const CardItem = ({ value }) => {
     
       }
 
-      const fetchFriendList = () => {
-        axios.get('/api/friendlist/get-friendlist')
-          .then((response) => {
-            // console.log(response.data);
-            setFriendList(response.data);
-          })
-          .catch((err) => {
-            console.log(err);
-          })
-      }
-
-
-      useEffect(() => {
-        fetchFriendList();
-      }, []);
+      
 
     const handleClick = (ind) => {
 
