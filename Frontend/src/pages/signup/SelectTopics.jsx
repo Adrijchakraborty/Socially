@@ -84,7 +84,7 @@ const SelectTopics = () => {
           <div
             key={index}
             onClick={() => handleToggleTopic(index, topic)}
-            className={`rounded-full px-3 py-2 w-fit cursor-pointer transition-colors duration-200 ${selectedTopics.includes(index) ? 'bg-blue-300' : 'bg-slate-200'
+            className={`rounded-full px-3 py-2 w-fit cursor-pointer transition-colors duration-200 ${selectedTopics.includes(index) ? 'bg-blue-300' : 'bg-gray-600'
               }`}
           >
             <p>

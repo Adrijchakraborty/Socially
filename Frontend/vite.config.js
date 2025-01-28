@@ -6,7 +6,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/api': {
-        target: 'https://socially-102k.onrender.com',//   https://socially-102k.onrender.com  http://localhost:4000
+        target: 'http://localhost:4000',//   https://socially-102k.onrender.com  http://localhost:4000
         changeOrigin: true,
       }
     }
