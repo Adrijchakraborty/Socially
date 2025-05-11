@@ -37,14 +37,11 @@ export const login = async (req, res, next) => {
             return next(createError(404, "Invalid Credentials"));
         }
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY, {
-            expiresIn: "30d",
-        });
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET_KEY);
 
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            maxAge: 30 * 24 * 60 * 60 * 1000,
             sameSite: "strict",
         });
         const { password: pass, ...others } = user._doc;
